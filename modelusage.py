@@ -2,16 +2,16 @@ from peft import PeftModel, PeftConfig
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 # Load the PEFT configuration
-config = PeftConfig.from_pretrained("hammadali1805/model")
+config = PeftConfig.from_pretrained("hammadali1805/legal_bart_large_cnn")
 
 # Load the base T5 model
-base_model = AutoModelForSeq2SeqLM.from_pretrained("google-t5/t5-small")
+base_model = AutoModelForSeq2SeqLM.from_pretrained("facebook/bart-large-cnn")
 
 # Load the PEFT model
-model = PeftModel.from_pretrained(base_model, "hammadali1805/model")
+model = PeftModel.from_pretrained(base_model, "hammadali1805/legal_bart_large_cnn")
 
 # Load the tokenizer
-tokenizer = AutoTokenizer.from_pretrained("google-t5/t5-small")
+tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
 
 # Function to summarize text
 def summarize(text, max_length=512, min_length=30, num_beams=2):
