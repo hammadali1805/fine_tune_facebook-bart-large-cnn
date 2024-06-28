@@ -16,7 +16,7 @@ tokenizer = AutoTokenizer.from_pretrained("facebook/bart-large-cnn")
 # Function to summarize text
 def summarize(text, max_length=512, min_length=30, num_beams=2):
     # Prepare the text
-    input_ids = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=512, truncation=True)
+    input_ids = tokenizer.encode(text, return_tensors="pt", max_length=512, truncation=True)
     
     # Use the underlying model's generate method
     summary_ids = model.base_model.generate(input_ids, max_length=max_length, min_length=min_length, num_beams=num_beams, length_penalty=2.0, early_stopping=True)
